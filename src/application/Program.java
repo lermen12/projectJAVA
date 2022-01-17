@@ -1,6 +1,7 @@
 package application;
 
 import db.DB;
+import model.entities.Department;
 
 import java.sql.Connection;
 
@@ -13,5 +14,6 @@ public class Program {
         } else {
             System.out.println("Erro de conexão");
         }
+
     }
 }
