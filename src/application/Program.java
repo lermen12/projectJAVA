@@ -1,6 +1,8 @@
 package application;
 
 import db.DB;
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
 
@@ -16,9 +18,9 @@ public class Program {
         } else {
             System.out.println("Erro de conexão");
         }
-        Department department = new Department(1,"books");
-        System.out.println(department);
-        Seller seller = new Seller(21,"Lucas","menorlermen@gmail.com",new Date(),3000.0,department);
+        SellerDao sellerDao = DaoFactory.createSellerDao();
+        Seller seller = sellerDao.findById(3);
+
         System.out.println(seller);
     }
 }
