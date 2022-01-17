@@ -7,20 +7,20 @@ import model.entities.Department;
 import model.entities.Seller;
 
 import java.sql.Connection;
-import java.util.Date;
+import java.util.List;
 
 public class Program {
     public static void main(String[] args) throws Exception {
         Connection connection = DB.createConnection();
-
-        if (connection != null) {
-            System.out.println("Conexão obtida com sucesso");
-        } else {
-            System.out.println("Erro de conexão");
-        }
         SellerDao sellerDao = DaoFactory.createSellerDao();
-        Seller seller = sellerDao.findById(3);
 
+        System.out.println("=== Teste 1: seller findById ======");
+        Seller seller = sellerDao.findById(3);
         System.out.println(seller);
+        System.out.println("\n=== Teste 2: seller findByDepartment ======");
+        Department department = new Department(2,null);
+        List<Seller> list = sellerDao.findByDepartment(department);
+        for (Seller seller1 : list) System.out.println(seller1);
+
     }
 }
